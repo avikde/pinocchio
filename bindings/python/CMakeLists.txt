@@ -78,11 +78,6 @@ function(PINOCCHIO_PYTHON_BINDINGS_SPECIFIC_TYPE scalar_name)
     TARGETS eigenpy::eigenpy)
   target_link_libraries(${PYTHON_LIB_NAME} PUBLIC ${PROJECT_NAME})
 
-  if(BUILD_WITH_URDF_SUPPORT)
-    # Link directly against console_bridge since we bind some enums and call
-    # console_bridge::setLogLevel function.
-    target_link_libraries(${PYTHON_LIB_NAME} PUBLIC console_bridge::console_bridge)
-  endif()
   if(BUILD_WITH_HPP_FCL_SUPPORT)
     target_compile_definitions(${PYTHON_LIB_NAME}
                                PRIVATE -DPINOCCHIO_PYTHON_INTERFACE_WITH_HPP_FCL_PYTHON_BINDINGS)

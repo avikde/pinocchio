@@ -272,10 +272,13 @@ if(BUILD_WITH_PARSERS_SUPPORT)
       target_compile_definitions(${PARSERS_LIB_NAME} PRIVATE PINOCCHIO_URDFDOM_USE_STD_SHARED_PTR)
     endif()
 
+    set(LOGURU_LIB "${CMAKE_INSTALL_PREFIX}/lib")
+    find_library(LOGURU_FOUND loguru HINTS ${LOGURU_LIB} REQUIRED)
+
     modernize_target_link_libraries(
       ${PARSERS_LIB_NAME}
       SCOPE PUBLIC
-      TARGETS urdfdom::urdf_parser
+      TARGETS urdfdom::urdf_parser ${LOGURU_FOUND}
       LIBRARIES ${urdfdom_LIBRARIES}
       INCLUDE_DIRS ${urdfdom_INCLUDE_DIRS})
   endif()
