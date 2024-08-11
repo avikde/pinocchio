@@ -20,6 +20,10 @@ set(PINOCCHIO_PROJECT_SOURCE_DIR ${CMAKE_CURRENT_LIST_DIR})
 set(CXX_DISABLE_WERROR True)
 set(CMAKE_VERBOSE_MAKEFILE True)
 
+if (WIN32)
+  link_directories(C:/local/boost_1_74_0/lib64-msvc-14.2)
+endif()
+
 # ----------------------------------------------------
 # --- OPTIONS  ---------------------------------------
 # Need to be set before including base.cmake
